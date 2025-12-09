@@ -112,8 +112,17 @@ class ManipulacionDeArchivos{
 	}//ingresar palabras
 	
 	public void borrarPalabras() {
-		
+		try {
+			FileWriter fw = new FileWriter("Palabras.txt");
+			fw.write("");
+			fw.close();
+			
+		}catch(Exception e){
+			System.out.println("Error al borrar el archivo.");
+		}
 	}//borrar palabras
+	
+	
 	
 }//class manipulacion de archivos 
 
