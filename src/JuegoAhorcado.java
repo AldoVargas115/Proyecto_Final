@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -206,6 +207,16 @@ class juegoAhorcado{
 		Random r = new Random();
 		return lista.get(r.nextInt(lista.size()));
 	}//elegir palabra array list
+	
+	public void inicioAhorcado(String palabra) {
+	
+		System.out.println("=====Este es el juego del ahorcado=====");
+		System.out.println("La palabra tiene " + palabra.length()+ "letras, podras adivinarla?");
+		
+		ArrayList<String> abecedario = new ArrayList<>(Arrays.asList("a", "b", "c","d","e","f","g","h","i","j","k","l","m","n","ñ",
+                "o","p","q","r","s","t","u","v","w","x","y","z"));
+		
+	}
 	
 	
 }//class ahorcado
