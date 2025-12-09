@@ -111,7 +111,9 @@ class ManipulacionDeArchivos{
 		}
 	}//ingresar palabras
 	
-	
+	public void borrarPalabras() {
+		
+	}//borrar palabras
 	
 }//class manipulacion de archivos 
 
