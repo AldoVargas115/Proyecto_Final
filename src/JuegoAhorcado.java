@@ -205,7 +205,7 @@ class juegoAhorcado{
 	public String elegirPalabra(ArrayList<String> lista) {
 		Random r = new Random();
 		return lista.get(r.nextInt(lista.size()));
-	}
+	}//elegir palabra array list
 	
 	
 }//class ahorcado
