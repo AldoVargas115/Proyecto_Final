@@ -16,7 +16,7 @@ class Oportunidades{
 			this.oportunidades--;
 		}
 	}
-	public int obtenerOportunidades() {
+	public int getOportunidades() {
 		return this.oportunidades;
 	}
 }//class oportunidades
@@ -216,7 +216,51 @@ class juegoAhorcado{
 		ArrayList<String> abecedario = new ArrayList<>(Arrays.asList("a", "b", "c","d","e","f","g","h","i","j","k","l","m","n","ñ",
                 "o","p","q","r","s","t","u","v","w","x","y","z"));
 		
-	}
+		op.iniciarOportunidades();
+		pila = new PilaLetras(200);
+		ArrayList<String> letrasIng = new ArrayList<>();
+		
+		while(!seAdivinoLaPalabra(palabra, letrasIng)) {
+			
+			System.out.println("==========");
+			System.out.println("Solo tienes "+ op.getOportunidades()+ "oportunidades mas");
+			System.out.println("Letras disponibles: ");
+			System.out.println(abecedario);
+			
+			String letra = "";
+			boolean valido = false;
+			
+			while(!valido) {
+				System.out.println("Ingresa una letra: ");
+				letra = sc.nextLine().toLowerCase();
+				
+				if(letrasIng.contains(letra)) {
+					System.out.println("Ya ingresaste esa letra.");
+				} else if(letra.length() != 1){
+					System.out.println("Ingresa solo una letra. ");
+					} else if(!letra.matches("[a-zñ]")) {
+						System.out.println("Asegurate de solo ingresar letras");
+						}else {
+							valido = true;
+						}
+						}
+			letrasIng.add(letra);
+			
+			//guardar en pila
+			pila.push(letra.toUpperCase().charAt(0));
+			
+			if(!busquedaLineal(palabra, letra.toUpperCase())) {
+				System.out.println("La letra no se encuentra en la palabra.");
+				op.reducriOp();
+			}
+			obtenerPalabraAdivinada(palabra, letrasIng);
+			obtenerLetrasDisponibles(letrasIng, abecedario);
+			
+			if(op.getOportunidades()== 0)
+				break;
+		}
+		
+	}//metodo inicio ahorcado
 	
 	
 }//class ahorcado
