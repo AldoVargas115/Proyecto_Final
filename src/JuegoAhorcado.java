@@ -68,6 +68,7 @@ class ManipulacionDeArchivos{
 			System.out.println("Error al leer el archivo.");
 		}
 		return contador;
+		//final de la clase 
 	}//class manipulacion del archivo
 	
 }//class manipulacion de archivos 
