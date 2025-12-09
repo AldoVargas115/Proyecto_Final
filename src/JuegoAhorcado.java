@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Oportunidades{
@@ -162,6 +163,44 @@ class ManipulacionDeArchivos{
 }//class de manipulacion de archivos 
 
 class juegoAhorcado{
+	
+	Oportunidades op = new Oportunidades();
+	ManipulacionDeArchivos ma = new ManipulacionDeArchivos();
+	Scanner sc = new Scanner(System.in);
+	
+	PilaLetras pila = new PilaLetras(200);
+	
+	public ArrayList<String> cargarPalabras(){
+		
+		while(true) {
+			ArrayList<String> lista = new ArrayList<>();
+			
+			try {
+				File f = new File("Palabras.txt");
+				if(!f.exists()) f.createNewFile();
+				
+				Scanner lector = new Scanner(f);
+				
+				while(lector.hasNext()) {
+					lista.add(lector.next().toUpperCase());
+				}
+				
+				lector.close();
+				
+			}catch(Exception e) {
+				
+				System.out.println("Error al cargar palabras");
+			}
+			
+			if(lista.size() == 0) {
+				System.out.println("El archivo esta vacio, ingresa palabras.");
+				ma.ingresarPalabras();
+			} else {
+				return lista;
+			}
+		}
+	}
+	
 	
 }//class ahorcado
 
