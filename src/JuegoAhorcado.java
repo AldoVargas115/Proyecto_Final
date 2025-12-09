@@ -262,6 +262,10 @@ class juegoAhorcado{
 		
 	}//metodo inicio ahorcado
 	
+	public boolean seAdivinoLaPalabra(String palabra, ArrayList<String> letrasIng) {
+		
+	}
+	
 	
 }//class ahorcado
 
