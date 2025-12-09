@@ -1,3 +1,6 @@
+import java.io.File;
+import java.util.Scanner;
+
 class Oportunidades{
 	int oportunidades = 0;
 	
@@ -47,7 +50,27 @@ class PilaLetras{
 		System.out.println("\n");
 	}
 }//class pila
-
+class ManipulacionDeArchivos{
+	public int verificarArchivo() {
+		int contador = 0;
+		
+		try {
+			File f = new File("Palabras.txt");
+			if (!f.exists()) f.createNewFile();
+			
+			Scanner sc = new Scanner(f);
+			while(sc.hasNext()) {
+				sc.next();
+				contador++;
+			}//while
+			sc.close();
+		}catch(Exception e) {
+			System.out.println("Error al leer el archivo.");
+		}
+		return contador;
+	}//class manipulacion del archivo
+	
+}//class manipulacion de archivos 
 public class JuegoAhorcado {
 
 	public static void main(String[] args) {
