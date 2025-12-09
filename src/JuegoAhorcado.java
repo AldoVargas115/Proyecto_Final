@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 class Oportunidades{
@@ -200,6 +201,11 @@ class juegoAhorcado{
 			}
 		}
 	}//cargar palabras array list
+	
+	public String elegirPalabra(ArrayList<String> lista) {
+		Random r = new Random();
+		return lista.get(r.nextInt(lista.size()));
+	}
 	
 	
 }//class ahorcado
