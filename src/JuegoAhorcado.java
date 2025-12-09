@@ -159,7 +159,9 @@ class ManipulacionDeArchivos{
 		
 	}//metodo shellsort
 	
-}//class manipulacion de archivos 
+}//class de manipulacion de archivos 
+
+
 
 
 
