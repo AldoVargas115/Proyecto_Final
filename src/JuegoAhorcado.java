@@ -122,7 +122,9 @@ class ManipulacionDeArchivos{
 		}
 	}//borrar palabras
 	
-	
+	public boolean hangman() {
+		
+	}
 	
 }//class manipulacion de archivos 
 
