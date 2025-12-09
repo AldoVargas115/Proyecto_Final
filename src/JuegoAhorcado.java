@@ -199,7 +199,7 @@ class juegoAhorcado{
 				return lista;
 			}
 		}
-	}
+	}//cargar palabras array list
 	
 	
 }//class ahorcado
