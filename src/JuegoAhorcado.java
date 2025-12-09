@@ -126,6 +126,10 @@ class ManipulacionDeArchivos{
 		return verificarArchivo()<0;
 	}//hangman
 	
+	public void ordenShellSort(String[] palabras) {
+		
+	}//shellsort
+	
 }//class manipulacion de archivos 
 
 
