@@ -161,6 +161,10 @@ class ManipulacionDeArchivos{
 	
 }//class de manipulacion de archivos 
 
+class juegoAhorcado{
+	
+}//class ahorcado
+
 
 
 
