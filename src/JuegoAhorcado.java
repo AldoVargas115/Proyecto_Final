@@ -127,8 +127,37 @@ class ManipulacionDeArchivos{
 	}//hangman
 	
 	public void ordenShellSort(String[] palabras) {
+		int n = palabras.length;
+		int intervalo = n/2;
 		
-	}//shellsort
+		while(intervalo>0) {
+			for (int i = intervalo; i < n; i++) {
+				String val = palabras[i];
+				int j = i;
+				
+				while(j >= intervalo && palabras[j - intervalo].compareTo(val)>0 ) {
+					palabras[j] = palabras[j-intervalo];
+					j -= intervalo;
+				}
+				palabras[j] = val;	
+			}
+			intervalo /= 2;
+		}
+		
+		borrarPalabras();
+		
+		try {
+			FileWriter fw = new FileWriter("Palabras.txt", true);
+			for(String p : palabras) {
+				fw.write("\n" + p);
+			}
+			fw.close();
+		}catch(Exception e) {
+			
+			System.out.println("Error ordenando el archivo.");
+		}
+		
+	}//metodo shellsort
 	
 }//class manipulacion de archivos 
 
