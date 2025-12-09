@@ -72,6 +72,10 @@ class ManipulacionDeArchivos{
 	}//class manipulacion del archivo
 	
 }//class manipulacion de archivos 
+
+//metodos manipulacion de archivos
+
+
 public class JuegoAhorcado {
 
 	public static void main(String[] args) {
