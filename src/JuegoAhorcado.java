@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 class Oportunidades{
@@ -69,11 +70,52 @@ class ManipulacionDeArchivos{
 		}
 		return contador;
 		//final de la clase 
-	}//class manipulacion del archivo
+	}
+	//metodos manipulacion de archivos
+	public void ingresarPalabras() {
+		Scanner sc = new Scanner(System.in);
+		boolean cont = false;
+		String op = "";
+		
+		while(!cont) {
+			
+			try {
+				FileWriter fw = new FileWriter("Palabras.txt", true);
+				System.out.println("Ingresa una palabra: ");
+				String nueva = sc.nextLine();
+				
+				fw.write("\n"+ nueva);
+				fw.close();
+				System.out.println("Se agrego de forma correcta la palabra: ");
+				
+				boolean salida = false;
+				while(!salida) {
+					System.out.println("Deseas ingresar otra palabra?");
+					System.out.println("1.- Si");
+					System.out.println("2.- No");
+					
+					op = sc.nextLine();
+					
+					if(op.equals("1")|| op.equals("2")) {
+						salida = true;
+					} else {
+						System.out.println("Opcion invalida");
+					}
+				}
+				
+				cont = op.equals("2");
+				
+			}catch (Exception e) {
+				System.out.println("Error al escribir en el archivo.");
+			}
+		}
+	}//ingresar palabras
+	
+	
 	
 }//class manipulacion de archivos 
 
-//metodos manipulacion de archivos
+
 
 
 public class JuegoAhorcado {
