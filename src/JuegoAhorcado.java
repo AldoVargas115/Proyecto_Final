@@ -123,8 +123,8 @@ class ManipulacionDeArchivos{
 	}//borrar palabras
 	
 	public boolean hangman() {
-		
-	}
+		return verificarArchivo()<0;
+	}//hangman
 	
 }//class manipulacion de archivos 
 
