@@ -336,18 +336,73 @@ class juegoAhorcado{
 		}
 		return false;
 	}//busqueda lineal
-	
-	
 }//class ahorcado
-
-
-
-
 
 
 public class JuegoAhorcado {
 
 	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		JuegoAhorcado juegoA = new JuegoAhorcado();
+		ManipulacionDeArchivos ma = new ManipulacionDeArchivos();
+		
+		boolean salir = false;
+		
+		while(!salir) {
+			boolean salida = false;
+			
+			while(!salida) {
+				System.out.println("Selecciona una de las siguientes opciones: ");
+				System.out.println("1.- Verificar archivo");
+				System.out.println("2.- Llenar el archivo");
+				System.out.println("3.- Borrar el archivo");
+				System.out.println("4.- Jugar");
+				System.out.println("5.- Salir");
+				
+				String op = sc.nextLine();
+				
+				if(op.equals("1")||op.equals("2")||op.equals("3")||op.equals("4")||op.equals("5")) {
+					salida = true;
+				} else {
+					System.out.println("Opcion invalida");
+				}
+				if(op.equals("1")) {
+					System.out.println("Hay " + ma.verificarArchivo() + " palabras");
+				}
+				if(op.equals("2")) {
+					ma.ingresarPalabras();
+				}
+				if(op.equals("3")) {
+					ma.borrarPalabras();
+					System.out.println("Las palabras han sido borradas de forma correcta.");
+				}
+				if(op.equals("4")) {
+					ArrayList<String> palabras = juegoA.
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 
 	}
