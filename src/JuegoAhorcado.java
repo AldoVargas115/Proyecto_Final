@@ -301,6 +301,11 @@ class juegoAhorcado{
 		return true;
 	}//metodo se adivino la palabra
 	
+	public void obtenerPalabraAdivinada(String palabra, ArrayList<String> letrasIng) {
+		
+		StringBuilder secreta = new StringBuilder();
+	}
+	
 	
 }//class ahorcado
 
