@@ -335,7 +335,7 @@ class juegoAhorcado{
 			}
 		}
 		return false;
-	}
+	}//busqueda lineal
 	
 	
 }//class ahorcado
