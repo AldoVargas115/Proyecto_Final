@@ -304,6 +304,16 @@ class juegoAhorcado{
 	public void obtenerPalabraAdivinada(String palabra, ArrayList<String> letrasIng) {
 		
 		StringBuilder secreta = new StringBuilder();
+		
+		for(char c : palabra.toLowerCase().toCharArray()) {
+			if(letrasIng.contains(String.valueOf(c))) {
+				secreta.append(" ").append(c);
+			} else {
+				secreta.append(" _");
+			}
+		}
+		
+		System.out.println(secreta.toString());
 	}
 	
 	
