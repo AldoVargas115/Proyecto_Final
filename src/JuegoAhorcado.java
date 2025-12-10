@@ -314,6 +314,10 @@ class juegoAhorcado{
 		}
 		
 		System.out.println(secreta.toString());
+	}//obtener palabra adivinada
+	
+	public ArrayList<String> obtenerLetrasDisponibles(ArrayList<String> letrasIng, ArrayList<String> abecedario){
+		
 	}
 	
 	
