@@ -263,8 +263,43 @@ class juegoAhorcado{
 	}//metodo inicio ahorcado
 	
 	public boolean seAdivinoLaPalabra(String palabra, ArrayList<String> letrasIng) {
+		for(char c : palabra.toLowerCase().toCharArray()) {
+			if(!letrasIng.contains(String.valueOf(c))) {
+				if(op.getOportunidades() > 0)
+					return false;
+			}
+		}
 		
-	}
+		if(op.getOportunidades() == 0) {
+			System.out.println("\nNo adivinaste la palabra, perdiste.");
+			System.out.println("La palabra correcta era: "+palabra);
+		} else {
+			System.out.println("\nFelicidades, ganaste!!");
+		}
+		System.out.println("\nHistorial de letras ingresadas: ");
+		pila.mostrarPila();
+		
+		boolean salida = false;
+		while(!salida) {
+			System.out.println("Deseas jugar otra vez?");
+			System.out.println("1.- Si");
+			System.out.println("2.- No");
+			
+			String op2 = sc.nextLine();
+			
+			if(op2.equals("1") || op2.equals("2")) {
+				salida = true;
+				if(op2.equals("2")) {
+					System.out.println("Gracias por jugar!!");
+					System.exit(0);
+				}
+				
+			}else {
+				System.out.println("Opcion invalida.");
+			}
+		}
+		return true;
+	}//metodo se adivino la palabra
 	
 	
 }//class ahorcado
