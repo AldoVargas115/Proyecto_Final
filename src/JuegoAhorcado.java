@@ -318,7 +318,14 @@ class juegoAhorcado{
 	
 	public ArrayList<String> obtenerLetrasDisponibles(ArrayList<String> letrasIng, ArrayList<String> abecedario){
 		
-	}
+		for (int i = 0; i < abecedario.size(); i++) {
+			
+			if(letrasIng.contains(abecedario.get(i))) {
+				abecedario.set(i, "");
+			}
+		}
+		return abecedario;
+	}//metodo obtener letras disponibles
 	
 	
 }//class ahorcado
