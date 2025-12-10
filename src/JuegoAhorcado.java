@@ -345,7 +345,7 @@ public class JuegoAhorcado {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		JuegoAhorcado juegoA = new JuegoAhorcado();
+		juegoAhorcado juegoA = new juegoAhorcado();
 		ManipulacionDeArchivos ma = new ManipulacionDeArchivos();
 		
 		boolean salir = false;
@@ -379,7 +379,13 @@ public class JuegoAhorcado {
 					System.out.println("Las palabras han sido borradas de forma correcta.");
 				}
 				if(op.equals("4")) {
-					ArrayList<String> palabras = juegoA.
+					ArrayList<String> palabras = juegoA.cargarPalabras();
+					String palabra = juegoA.elegirPalabra(palabras);
+					juegoA.inicioAhorcado(palabra);
+				}
+				if(op.equals("5")) {
+					System.out.println("Gracias por haber jugado!!!");
+					salir = true;
 				}
 			}
 		}
