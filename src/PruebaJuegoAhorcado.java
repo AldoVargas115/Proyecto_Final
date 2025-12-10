@@ -211,7 +211,7 @@ class juegoAhorcado{
 	public void inicioAhorcado(String palabra) {
 	
 		System.out.println("=====Este es el juego del ahorcado=====");
-		System.out.println("La palabra tiene " + palabra.length()+ "letras, podras adivinarla?");
+		System.out.println("La palabra tiene " + palabra.length()+ " letras, podras adivinarla?");
 		
 		ArrayList<String> abecedario = new ArrayList<>(Arrays.asList("a", "b", "c","d","e","f","g","h","i","j","k","l","m","n","ñ",
                 "o","p","q","r","s","t","u","v","w","x","y","z"));
@@ -223,7 +223,7 @@ class juegoAhorcado{
 		while(!seAdivinoLaPalabra(palabra, letrasIng)) {
 			
 			System.out.println("==========");
-			System.out.println("Solo tienes "+ op.getOportunidades()+ "oportunidades mas");
+			System.out.println("Solo tienes "+ op.getOportunidades()+ " oportunidades mas");
 			System.out.println("Letras disponibles: ");
 			System.out.println(abecedario);
 			
@@ -256,28 +256,36 @@ class juegoAhorcado{
 			obtenerPalabraAdivinada(palabra, letrasIng);
 			obtenerLetrasDisponibles(letrasIng, abecedario);
 			
-			if(op.getOportunidades()== 0)
-				break;
+			if(op.getOportunidades()== 0) {
+				seAdivinoLaPalabra(palabra, letrasIng);
+				return;
+			}
+				
 		}
 		
 	}//metodo inicio ahorcado
 	
 	public boolean seAdivinoLaPalabra(String palabra, ArrayList<String> letrasIng) {
+		boolean faltanLetras = false;
 		for(char c : palabra.toLowerCase().toCharArray()) {
 			if(!letrasIng.contains(String.valueOf(c))) {
-				if(op.getOportunidades() > 0)
-					return false;
+				faltanLetras = true;
+				break;
 			}
 		}
 		
-		if(op.getOportunidades() == 0) {
-			System.out.println("\nNo adivinaste la palabra, perdiste.");
-			System.out.println("La palabra correcta era: "+palabra);
-		} else {
-			System.out.println("\nFelicidades, ganaste!!");
+		if(faltanLetras && op.getOportunidades()>0) {
+			return false;
 		}
-		System.out.println("\nHistorial de letras ingresadas: ");
-		pila.mostrarPila();
+		
+		if(faltanLetras && op.getOportunidades() == 0) {
+			System.out.println("No se ha adivinado la palabra.");
+			System.out.println("Perdiste.");
+			System.out.println("La palabra era: " + palabra);
+		}
+		if(!faltanLetras) {
+			System.out.println("Felicidades, has ganado en el juego del ahorcado!!");
+		}
 		
 		boolean salida = false;
 		while(!salida) {
@@ -339,7 +347,7 @@ class juegoAhorcado{
 }//class ahorcado
 
 
-public class JuegoAhorcado {
+public class PruebaJuegoAhorcado {
 
 	public static void main(String[] args) {
 		
