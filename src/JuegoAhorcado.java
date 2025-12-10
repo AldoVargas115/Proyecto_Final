@@ -327,6 +327,16 @@ class juegoAhorcado{
 		return abecedario;
 	}//metodo obtener letras disponibles
 	
+	public boolean busquedaLineal(String palabra, String letra2) {
+		
+		for(char c : palabra.toCharArray()) {
+			if(String.valueOf(c).equals(letra2)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 }//class ahorcado
 
