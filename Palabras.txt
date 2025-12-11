@@ -1,3 +1,5 @@
 
-lol
-hola
+hello
+objeto
+variable
+instance

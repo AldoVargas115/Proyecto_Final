@@ -71,23 +71,29 @@ class ManipulacionDeArchivos{
 		}catch(Exception e) {
 			System.out.println("Error al leer el archivo.");
 		}
+		
 		return contador;
-		//final de la clase 
+		
 	}
 	//metodos manipulacion de archivos
-	public void ingresarPalabras() {
+	
+	public void ingresarPalabras() { //Metodo que se encarga de agregar las palabras en el archivo
 		Scanner sc = new Scanner(System.in);
 		boolean cont = false;
 		String op = "";
 		
+		//While que no termina hasta que el usuario decida que no quiere ingresar mas palabras, o sea,
+		//ingrese el numero 2
 		while(!cont) {
 			
 			try {
 				FileWriter fw = new FileWriter("Palabras.txt", true);
 				System.out.println("Ingresa una palabra: ");
-				String nueva = sc.nextLine();
+				String nueva = sc.nextLine().trim().toUpperCase();
 				
-				fw.write("\n"+ nueva);
+				fw.write(nueva + System.lineSeparator()); //Se modifico esta linea ya que lo que tenia antes era incorrecto
+														  //ya que agregaba un salto de linea antes de agregar cada palabra
+														 //por lo que no funcionaba el shell sort
 				fw.close();
 				System.out.println("Se agrego de forma correcta la palabra: ");
 				
@@ -112,6 +118,25 @@ class ManipulacionDeArchivos{
 				System.out.println("Error al escribir en el archivo.");
 			}
 		}
+		
+		ArrayList<String> palabras = new ArrayList<>(); //Esto lo que hace es cargar las palabras en el archivo
+														//En uppercase y en orden, por eso al final se manda a llamar
+														//el metodo de ordenShellSort
+		try {
+			File f = new File("Palabras.txt");
+			Scanner lector = new Scanner(f);
+			
+			while(lector.hasNextLine()) {
+				String linea = lector.nextLine().trim().toUpperCase();
+				if(!linea.isEmpty()) palabras.add(linea);
+			}
+			lector.close();
+		}catch(Exception e) {
+			System.out.println("Error al cargar palabras");
+		}
+		
+		String[] arr = palabras.toArray(new String[0]);
+		ordenShellSort(arr);
 	}//ingresar palabras
 	
 	public void borrarPalabras() {
@@ -129,15 +154,20 @@ class ManipulacionDeArchivos{
 		return verificarArchivo()<0;
 	}//hangman
 	
-	public void ordenShellSort(String[] palabras) {
+	public void ordenShellSort(String[] palabras) { //implementacion del metodo ShellSort para ordenar las palabras del archivo en
+		//orden alfabetico
+		for(int i = 0; i < palabras.length; i++) {
+			palabras[i] = palabras[i].toUpperCase().trim();
+		}
+
 		int n = palabras.length;
 		int intervalo = n/2;
-		
+
 		while(intervalo>0) {
 			for (int i = intervalo; i < n; i++) {
 				String val = palabras[i];
 				int j = i;
-				
+
 				while(j >= intervalo && palabras[j - intervalo].compareTo(val)>0 ) {
 					palabras[j] = palabras[j-intervalo];
 					j -= intervalo;
@@ -146,20 +176,20 @@ class ManipulacionDeArchivos{
 			}
 			intervalo /= 2;
 		}
-		
+
 		borrarPalabras();
-		
+
 		try {
 			FileWriter fw = new FileWriter("Palabras.txt", true);
 			for(String p : palabras) {
-				fw.write("\n" + p);
+				fw.write(p + System.lineSeparator());
 			}
 			fw.close();
 		}catch(Exception e) {
-			
+
 			System.out.println("Error ordenando el archivo.");
 		}
-		
+
 	}//metodo shellsort
 	
 }//class de manipulacion de archivos 
@@ -199,7 +229,10 @@ class juegoAhorcado{
 				ma.ingresarPalabras();
 			} else {
 				return lista;
-			}
+				}
+				
+			
+		
 		}
 	}//cargar palabras array list
 	
@@ -378,6 +411,11 @@ public class PruebaJuegoAhorcado {
 				}
 				if(op.equals("1")) {
 					System.out.println("Hay " + ma.verificarArchivo() + " palabras");
+					ArrayList<String> palabras = juegoA.cargarPalabras();
+					System.out.println("Palabras del archivo:");
+					for(String p : palabras) {
+						System.out.println(p);
+					}
 				}
 				if(op.equals("2")) {
 					ma.ingresarPalabras();
